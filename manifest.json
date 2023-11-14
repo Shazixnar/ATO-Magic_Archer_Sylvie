@@ -1,0 +1,10 @@
+{
+    "name": "Magic_Archer_Sylvie",
+    "version_number": "1.0.0",
+    "website_url": "",
+    "description": "redo two enchantments for Sylvie to make her arrows deal magic damage. redo burning shot, ice shot, storm javelin and Sylvie's started deck for fitting",
+    "dependencies": [
+        "meds-Obeliskial_Essentials-1.0.0",
+        "meds-Obeliskial_Content-1.0.0"
+    ]
+}
