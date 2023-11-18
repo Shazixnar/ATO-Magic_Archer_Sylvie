@@ -31,7 +31,7 @@ PS: the Frost target's real effect is "reduce 20% pierce resistance and 35% cold
 ![Initial_Cards](Picture/initial_cards.png)
 </details>
 
-You can check them out at the Town of Knowledge in game.
+I'll be modifying this data frequently to make balance. So the picture maybe isn't the true number. You can check them out at the Town of Knowledge in game.
 
 ## Installation (manual)
 

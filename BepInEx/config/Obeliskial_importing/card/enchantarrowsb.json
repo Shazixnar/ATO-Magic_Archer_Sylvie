@@ -82,7 +82,7 @@
     "IncreaseCurses": 0,
     "ReduceAuras": 0,
     "ReduceCurses": 0,
-    "Innate": false,
+    "Innate": true,
     "LookCards": 0,
     "LookCardsDiscardUpTo": 0,
     "LookCardsVanishUpTo": 0,
@@ -160,7 +160,7 @@
         "electricshotsb"
     ],
     "AddCardPlace": "Hand",
-    "AddCardType": "Enchantment",
+    "AddCardType": "None",
     "AddCardTypeAux": [],
     "AddCardVanish": false,
     "RelatedCard": "fieryarrowb",
