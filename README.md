@@ -14,6 +14,22 @@ PS: the Frost target's real effect is "reduce 20% pierce resistance and 35% cold
 </details>
 
 <details>
+<summary>Traits</summary>
+
+### Level 3
+
+Archer's Intuition: When you play a \"Ranged Attack\" card, refund 1 Energy and apply 5 Sight to all enemies. (3 times/turn)
+
+Powerful Enchantment: Burn can recude 0.7% fire resistance and 0.3% pierce resistance per stack. Chill can increase 1 pierce damage received per stack. When you hit a monster with Spark, it also deals 30% of the target's Spark charges as Lightning damage.
+
+### Level 5
+
+Sharp With Hawk: Sharp +2. Upon pickup, replaces your pet slot with \"Harley\" corrupted version. Your \"Ranged Attacks\" ignore block.
+
+Element Lock： When you apply Burn, Chill or Spark, apply X Sight to target (X is the charge of you apply)
+</details>
+
+<details>
 <summary>Cards</summary>
 
 ### Cards
@@ -51,7 +67,5 @@ I'll be modifying this data frequently to make balance. So the picture maybe isn
 ## Support
 
 I will keep watching for cards strength, try to make sure these cards display their strength that should be there. Create a real magic archer instead of only using sharp to deal damage.
-
-Unfortunately, I can't redo all traits' effect now. So it's not all the effects I am expecting. I'll realise them in future.
 
 Hope you enjoy it and if have any idea or bug, just open a github issue or make a post in the **modding #support-and-requests** channel of the [official Across the Obelisk Discord](https://discord.gg/across-the-obelisk-679706811108163701).

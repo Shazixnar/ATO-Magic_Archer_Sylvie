@@ -58,12 +58,12 @@
     "SubclassName": "Archer",
     "Trait0": "keensight",
     "Trait1A": "targetshooting",
-    "Trait1B": "enchantarrows",
-    "Trait2A": "rangedmastery",
-    "Trait2B": "accurateshots",
+    "Trait1B": "sylvieenchantarrows",
+    "Trait2A": "sylviearchersintuition",
+    "Trait2B": "sylviepowerfulenchantment",
     "Trait3A": "doubleshot",
-    "Trait3B": "explosivetargets",
-    "Trait4A": "perforatingshots",
-    "Trait4B": "eternalbond",
+    "Trait3B": "sylvieexplosivetargets",
+    "Trait4A": "sylviesharpwithhawk",
+    "Trait4B": "sylvieelementlock",
     "AutoUnlock": false
 }
