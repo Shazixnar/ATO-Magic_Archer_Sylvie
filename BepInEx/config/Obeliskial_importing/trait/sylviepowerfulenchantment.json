@@ -23,7 +23,7 @@
     "DamageBonusPercentValue": 0.0,
     "DamageBonusPercentValue2": 0.0,
     "DamageBonusPercentValue3": 0.0,
-    "Description": "Burn can recude 0.7% fire resistance and 0.3% pierce resistance per stack. Chill can increase 1 pierce damage received per stack. When you hit a monster with Spark, it also deals 30% of the target's Spark charges as Lightning damage.",
+    "Description": "Burn can recude 0.7% fire resistance and 0.3% pierce resistance per charge. Chill can increase 1 pierce and cold damage received per 5 charges. When you hit a monster with Spark, it also deals 15% of the target's Spark charges as Lightning damage.",
     "HealFlatBonus": 0,
     "HealPercentBonus": 0.0,
     "HealReceivedFlatBonus": 0,

@@ -23,7 +23,7 @@
     "DamageBonusPercentValue": 0.0,
     "DamageBonusPercentValue2": 0.0,
     "DamageBonusPercentValue3": 0.0,
-    "Description": "When you apply Burn, Chill or Spark, apply X Sight to target (X is the charge of you apply)",
+    "Description": "When you apply Burn, Chill or Spark, apply X Sight to target (X is the charges of you apply)",
     "HealFlatBonus": 0,
     "HealPercentBonus": 0.0,
     "HealReceivedFlatBonus": 0,
