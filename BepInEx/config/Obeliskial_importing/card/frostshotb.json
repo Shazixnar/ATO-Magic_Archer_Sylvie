@@ -142,7 +142,7 @@
     "SpecialValue1": "AuraCurseTarget",
     "SpecialValue2": "None",
     "SpecialValueGlobal": "None",
-    "SpecialValueModifier1": 30,
+    "SpecialValueModifier1": 25,
     "SpecialValueModifier2": 0,
     "SpecialValueModifierGlobal": 0,
     "AddCard": 0,
