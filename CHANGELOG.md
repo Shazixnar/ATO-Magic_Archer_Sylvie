@@ -1,3 +1,11 @@
+# 2.0.3
+
+fix the bug about **Element Lock** trait effects items incorrectly. Now this trait can't effect with item (I'm sorry that I have no choice).
+
+modify the level 5 trait **Sharp with Hawk** -> **Arrow with Hawk**. Replace the effect of **ignoring the block** to **When you play a \"Ranged Attack\", card put a random \"Ranged Attack\" card in your hand with cost 0 and vanish. (4 times/turn)** (It will gain the warrior's cards. And it's my friends' ask).
+
+nerf yellow and corrupted graduated **Explosive Shot**. It's not repeat now.
+
 # 2.0.2
 
 fix the description of **Powerful Enchantment** about chill.

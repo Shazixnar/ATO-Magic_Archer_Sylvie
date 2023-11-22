@@ -14,27 +14,16 @@ namespace TraitMod
     internal class Traits
     {
         [HarmonyPostfix]
-        [HarmonyPatch(typeof(CardData), "GetIgnoreBlock")]
-        public static void GetIgnoreBlockPostfix(ref bool __result, ref CardData __instance)
-        {
-            if ((bool) (UnityEngine.Object) MatchManager.Instance)
-            {
-            Hero heroHeroActive = MatchManager.Instance.GetHeroHeroActive();
-            if (heroHeroActive != null && AtOManager.Instance.CharacterHaveTrait(heroHeroActive.SubclassName, "sylviesharpwithhawk") && __instance.HasCardType(Enums.CardType.Ranged_Attack))
-                __result = true;
-            }
-        }
-        [HarmonyPostfix]
         [HarmonyPatch(typeof(Hero), "AssignTrait")]
         public static void AssignTraitPostfix(ref String traitName, ref Hero __instance)
         {
-            if (traitName == "sylviesharpwithhawk")
+            if (traitName == "sylviearrowwithhawk")
             {
                 __instance.Pet = "harleyrare";
             }
         }
         // list of your trait IDs
-        public static string[] myTraitList = { "sylviearchersintuition", "sylvieelementlock" };
+        public static string[] myTraitList = { "sylviearchersintuition", "sylvieelementlock", "sylviearrowwithhawk" };
 
         public static void myDoTrait(string _trait, ref Trait __instance)
         {
@@ -91,33 +80,72 @@ namespace TraitMod
                         }
                     }
                 }
+                return;
             }
             
-            if (_trait == "sylvieelementlock")
+            else if (_trait == "sylvieelementlock")
             {
-                if (_target != null && _target.Alive)
+                if (_target != null && _target.Alive && MatchManager.Instance != null && (_auxString == "burn" || _auxString == "chill" || _auxString == "spark"))
                 {
-                    bool flag = false;
                     if (_auxString == "burn")
                     {
-                        flag = true;
-                        _target.SetAuraTrait(_character, "sight", _auxInt);
+                        _target.SetAuraTrait(_target, "sight", Functions.FuncRoundToInt((float)_auxInt));
+                        _character.HeroItem.ScrollCombatText(Texts.Instance.GetText("traits_Indomitable", ""), Enums.CombatScrollEffectType.Trait);
                     }
                     if (_auxString == "chill")
                     {
-                        flag = true;
-                        _target.SetAuraTrait(_character, "sight", _auxInt);
+                        _target.SetAuraTrait(_target, "sight", Functions.FuncRoundToInt((float)_auxInt));
+                        _character.HeroItem.ScrollCombatText(Texts.Instance.GetText("traits_Indomitable", ""), Enums.CombatScrollEffectType.Trait);
                     }
                     if (_auxString == "spark")
                     {
-                        flag = true;
-                        _target.SetAuraTrait(_character, "sight", _auxInt);
-                    }
-                    if (flag)
-                    {
-                        _character.HeroItem.ScrollCombatText(Texts.Instance.GetText("traits_Element Lock", ""), Enums.CombatScrollEffectType.Trait);
+                        _target.SetAuraTrait(_target, "sight", Functions.FuncRoundToInt((float)_auxInt));
+                        _character.HeroItem.ScrollCombatText(Texts.Instance.GetText("traits_Indomitable", ""), Enums.CombatScrollEffectType.Trait);
                     }
                 }
+                return;
+            }
+
+            else if (_trait == "sylviearrowwithhawk")
+            {
+                if (MatchManager.Instance != null && _castedCard != null)
+                {
+                    if (MatchManager.Instance.activatedTraits != null && MatchManager.Instance.activatedTraits.ContainsKey("sylviearrowwithhawk") && MatchManager.Instance.activatedTraits["sylviearrowwithhawk"] > traitData.TimesPerTurn - 1)
+                    {
+                        return;
+                    }
+                    if (MatchManager.Instance.CountHeroHand(-1) == 10)
+                    {
+                        Debug.Log("[TRAIT EXECUTION] Broke because player at max cards");
+                        return;
+                    }
+                    if (_castedCard.GetCardTypes().Contains(Enums.CardType.Ranged_Attack) && _character.HeroData != null)
+                    {
+                        if (!MatchManager.Instance.activatedTraits.ContainsKey("sylviearrowwithhawk"))
+                        {
+                            MatchManager.Instance.activatedTraits.Add("sylviearrowwithhawk", 1);
+                        }
+                        else
+                        {
+                            Dictionary<string, int> activatedTraits = MatchManager.Instance.activatedTraits;
+                            activatedTraits["sylviearrowwithhawk"] = activatedTraits["sylviearrowwithhawk"] + 1;
+                        }
+                        MatchManager.Instance.SetTraitInfoText();
+                        int randomIntRange = MatchManager.Instance.GetRandomIntRange(0, 100, "trait", "");
+                        int randomIntRange2 = MatchManager.Instance.GetRandomIntRange(0, Globals.Instance.CardListByType[Enums.CardType.Ranged_Attack].Count, "trait", "");
+                        string id = Globals.Instance.CardListByType[Enums.CardType.Ranged_Attack][randomIntRange2];
+                        id = Functions.GetCardByRarity(randomIntRange, Globals.Instance.GetCardData(id, false), false);
+                        string text = MatchManager.Instance.CreateCardInDictionary(id, "", false);
+                        CardData cardData = MatchManager.Instance.GetCardData(text);
+                        cardData.Vanish = true;
+                        cardData.EnergyReductionToZeroPermanent = true;
+                        MatchManager.Instance.GenerateNewCard(1, text, false, Enums.CardPlace.Hand, null, null, -1, true, 0);
+                        _character.HeroItem.ScrollCombatText(Texts.Instance.GetText("traits_Arrow with Hawk", "") + TextChargesLeft(MatchManager.Instance.activatedTraits["sylviearrowwithhawk"], traitData.TimesPerTurn), Enums.CombatScrollEffectType.Trait);
+                        MatchManager.Instance.ItemTraitActivated(true);
+                        MatchManager.Instance.CreateLogCardModification(cardData.InternalId, MatchManager.Instance.GetHero(_character.HeroIndex));
+                    }
+                }
+                return;
             }
         }
 

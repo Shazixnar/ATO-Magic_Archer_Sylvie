@@ -24,9 +24,9 @@ Powerful Enchantment: Burn can recude 0.7% fire resistance and 0.3% pierce resis
 
 ### Level 5
 
-Sharp With Hawk: Sharp +2. Upon pickup, replaces your pet slot with \"Harley\" corrupted version. Your \"Ranged Attacks\" ignore block.
+Arrow With Hawk: Sharp +2. Upon pickup, replaces your pet slot with \"Harley\" corrupted version. When you play a \"Ranged Attack\", card put a random \"Ranged Attack\" card in your hand with cost 0 and vanish. (4 times/turn).
 
-Element Lock： When you apply Burn, Chill or Spark, apply X Sight to target (X is the charge of you apply)
+Element Lock： When you apply Burn, Chill or Spark, apply X Sight to target (X is the charges of you apply) (Not effects with item).
 </details>
 
 <details>
