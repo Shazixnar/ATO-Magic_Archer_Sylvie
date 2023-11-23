@@ -1,9 +1,9 @@
 {
-    "Activation": "FinishCast",
-    "AuraCurseBonus1": "Sharp",
+    "Activation": "Damage",
+    "AuraCurseBonus1": "",
     "AuraCurseBonus2": "",
     "AuraCurseBonus3": "",
-    "AuraCurseBonusValue1": 2,
+    "AuraCurseBonusValue1": 0,
     "AuraCurseBonusValue2": 0,
     "AuraCurseBonusValue3": 0,
     "AuraCurseImmune1": "",
@@ -23,12 +23,12 @@
     "DamageBonusPercentValue": 0.0,
     "DamageBonusPercentValue2": 0.0,
     "DamageBonusPercentValue3": 0.0,
-    "Description": "Sharp +2. Upon pickup, replaces your pet slot with \"Harley\" corrupted version. When you play a \"Ranged Attack\", card put a random \"Ranged Attack\" card in your hand with cost 0 and vanish. (4 times/turn).",
+    "Description": "Burn can recude 0.7% fire resistance and 0.3% pierce resistance per charge. Chill can increase 1 pierce and cold damage received per 5 charges. When you hit a monster with Spark, it also deals 15% of the target's Spark charges as Lightning damage.",
     "HealFlatBonus": 0,
     "HealPercentBonus": 0.0,
     "HealReceivedFlatBonus": 0,
     "HealReceivedPercentBonus": 0.0,
-    "ID": "sylviearrowwithhawk",
+    "ID": "sylviepowerfulenchantment",
     "ResistModified1": "None",
     "ResistModified2": "None",
     "ResistModified3": "None",
@@ -36,8 +36,8 @@
     "ResistModifiedValue2": 0,
     "ResistModifiedValue3": 0,
     "TimesPerRound": 0,
-    "TimesPerTurn": 4,
+    "TimesPerTurn": 0,
     "TraitCard": "",
     "TraitCardForAllHeroes": "",
-    "TraitName": "Arrow With Hawk"
+    "TraitName": "Powerful Enchantment"
 }
