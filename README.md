@@ -7,9 +7,9 @@ A content pack for [Obeliskial Content](https://across-the-obelisk.thunderstore.
 
 ### Enchantments
 
-![Enchant_Arrows](Picture/enchant_arrows.png)
+![Enchant_Arrows](https://github.com/4AleRoL4/ATO-Magic_Archer_Sylvie/blob/main/Picture/enchant_arrows.png?raw=true)
 
-![Explosive_Targets](Picture/explosive_targets.png)
+![Explosive_Targets](https://github.com/4AleRoL4/ATO-Magic_Archer_Sylvie/blob/main/Picture/explosive_targets.png?raw=true)
 PS: the Frost target's real effect is "reduce 20% pierce resistance and 35% cold resistance"
 </details>
 
@@ -34,17 +34,21 @@ Element Lock： When you apply Burn, Chill or Spark, apply X Sight to target (X 
 
 ### Cards
 
-![Burning_Shot](Picture/burning_shot.png)
+![Burning_Shot](https://github.com/4AleRoL4/ATO-Magic_Archer_Sylvie/blob/main/Picture/burning_shot.png?raw=true)
 
-![Ice_Shot](Picture/ice_shot.png)
+![Ice_Shot](https://github.com/4AleRoL4/ATO-Magic_Archer_Sylvie/blob/main/Picture/ice_shot.png?raw=true)
 
-![Storm_Javelin](Picture/storm_javelin.png)
+![Storm_Javelin](https://github.com/4AleRoL4/ATO-Magic_Archer_Sylvie/blob/main/Picture/storm_javelin.png?raw=true)
+
+And 4 more cards.
+
+Cards List: **Burning shot**, **Explosive Shot**, **Frostbite**, **Ice Shot**, **Multishot**, **Storm Javelin**, **Toxic Rain**.
 </details>
 
 <details>
 <summary>Initial Cards</summary>
 
-![Initial_Cards](Picture/initial_cards.png)
+![Initial_Cards](https://github.com/4AleRoL4/ATO-Magic_Archer_Sylvie/blob/main/Picture/initial_cards.png?raw=true)
 </details>
 
 I'll be modifying this data frequently to make balance. So the picture maybe isn't the true number. You can check them out at the Town of Knowledge in game.
@@ -69,3 +73,7 @@ I'll be modifying this data frequently to make balance. So the picture maybe isn
 I will keep watching for cards strength, try to make sure these cards display their strength that should be there. Create a real magic archer instead of only using sharp to deal damage.
 
 Hope you enjoy it and if have any idea or bug, just open a github issue or make a post in the **modding #support-and-requests** channel of the [official Across the Obelisk Discord](https://discord.gg/across-the-obelisk-679706811108163701).
+
+## Donation
+
+I make mods just because I want, not making money. But if you want to donate to me, you can [Click it](https://ko-fi.com/shazixnar), and I thank you so much!

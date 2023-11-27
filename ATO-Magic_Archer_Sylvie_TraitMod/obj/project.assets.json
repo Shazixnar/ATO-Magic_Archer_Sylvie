@@ -2688,10 +2688,10 @@
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "2.0.3",
+    "version": "2.0.4",
     "restore": {
       "projectUniqueName": "D:\\Workspace\\ATOmod\\ATO-Magic_Archer_Sylvie\\ATO-Magic_Archer_Sylvie_TraitMod\\TraitMod.csproj",
-      "projectName": "com.shazixnar.MagicArchertraits",
+      "projectName": "com.shazixnar.MagicArcherTraits",
       "projectPath": "D:\\Workspace\\ATOmod\\ATO-Magic_Archer_Sylvie\\ATO-Magic_Archer_Sylvie_TraitMod\\TraitMod.csproj",
       "packagesPath": "C:\\Users\\alero\\.nuget\\packages\\",
       "outputPath": "D:\\Workspace\\ATOmod\\ATO-Magic_Archer_Sylvie\\ATO-Magic_Archer_Sylvie_TraitMod\\obj\\",

@@ -1,3 +1,7 @@
+# 2.0.4
+
+fix the README.md description.
+
 # 2.0.3
 
 fix the bug about **Element Lock** trait effects items incorrectly. Now this trait can't effect with item (I'm sorry that I have no choice).

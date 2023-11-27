@@ -7,7 +7,7 @@
   "targets": {
     ".NETStandard,Version=v2.1": {},
     ".NETStandard,Version=v2.1/": {
-      "com.shazixnar.MagicArchertraits/2.0.3": {
+      "com.shazixnar.MagicArcherTraits/2.0.4": {
         "dependencies": {
           "BepInEx.Analyzers": "1.0.8",
           "BepInEx.Core": "5.4.21",
@@ -19,7 +19,7 @@
           "Obeliskial Options": "2.0.2.0"
         },
         "runtime": {
-          "com.shazixnar.MagicArchertraits.dll": {}
+          "com.shazixnar.MagicArcherTraits.dll": {}
         }
       },
       "BepInEx.Analyzers/1.0.8": {},
@@ -391,7 +391,7 @@
     }
   },
   "libraries": {
-    "com.shazixnar.MagicArchertraits/2.0.3": {
+    "com.shazixnar.MagicArcherTraits/2.0.4": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -3,10 +3,10 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
 	<RootNamespace>TraitMod</RootNamespace>
-	<Product>TraitMod</Product>
-    <AssemblyName>com.shazixnar.MagicArchertraits</AssemblyName>
+	<Product>MagicArcherTraits</Product>
+    <AssemblyName>com.shazixnar.MagicArcherTraits</AssemblyName>
     <Description>Magic Archer Traits, made by Shazixnar</Description>
-    <Version>2.0.3</Version>
+    <Version>2.0.4</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
