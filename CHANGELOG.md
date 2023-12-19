@@ -1,3 +1,7 @@
+# 2.0.5
+
+Update for Obeliskial Content v1.1.0.
+
 # 2.0.4
 
 fix the README.md description.
