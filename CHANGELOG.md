@@ -1,3 +1,7 @@
+# 2.0.6
+
+Updata for Across the Obelisk version 1.5.0
+
 # 2.0.5
 
 Update for Obeliskial Content v1.1.0.
