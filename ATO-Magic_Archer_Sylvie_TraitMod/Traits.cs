@@ -213,7 +213,7 @@ namespace TraitMod
         {
             if (theEvent == Enums.EventActivation.Hitted && !__instance.IsHero && target != null && target.IsHero && target.HaveTrait("sylviepowerfulenchantment") && __instance.HasEffect("spark"))
             { // if NPC with spark is hit by hero with trait "sylviepowerfulenchantment"
-                // apply 30% of spark charges as Lightning damage
+                // apply 15% of spark charges as Lightning damage
                 __instance.IndirectDamage(Enums.DamageType.Lightning, Functions.FuncRoundToInt((float)__instance.GetAuraCharges("spark") * 0.15f));
             }
         }

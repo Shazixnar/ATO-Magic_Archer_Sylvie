@@ -12,7 +12,7 @@ namespace MagicArcherSylvie
     [BepInProcess("AcrossTheObelisk.exe")]
     public class Plugin : BaseUnityPlugin
     {
-        internal const int ModDate = 20250125;
+        internal const int ModDate = 20250725;
         private readonly Harmony harmony = new(PluginInfo.PLUGIN_GUID);
         internal static ManualLogSource Log;
         private void Awake()

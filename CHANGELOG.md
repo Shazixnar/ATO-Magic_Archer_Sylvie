@@ -1,3 +1,7 @@
+# 2.0.7
+
+change some descriptions.
+
 # 2.0.6
 
 Updata for Across the Obelisk version 1.5.0
