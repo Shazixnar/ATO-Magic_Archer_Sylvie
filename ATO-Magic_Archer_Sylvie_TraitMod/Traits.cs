@@ -76,7 +76,7 @@ namespace TraitMod
                     {
                         if (teamNPC[i] != null && teamNPC[i].Alive)
                         {
-                            teamNPC[i].SetAuraTrait(_character, "sight", 5);
+                            teamNPC[i].SetAuraTrait(_character, "sight", 3);
                         }
                     }
                 }

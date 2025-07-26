@@ -6,7 +6,7 @@
 	<Product>Magic Archer Sylvie</Product>
     <AssemblyName>com.shazixnar.MagicArcherTraits</AssemblyName>
     <Description>Magic Archer Traits, made by Shazixnar</Description>
-    <Version>2.0.7</Version>
+    <Version>2.0.8</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>

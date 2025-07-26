@@ -1,3 +1,8 @@
+# 2.0.8
+
+A little nerf.
+**Archer's intuition** now apply 3 sight instead of 5 sight.
+
 # 2.0.7
 
 change some descriptions.

@@ -18,7 +18,7 @@ PS: the Frost target's real effect is "reduce 20% pierce resistance and 35% cold
 
 ### Level 3
 
-Archer's Intuition: When you play a \"Ranged Attack\" card, refund 1 Energy and apply 5 Sight to all enemies. (3 times/turn)
+Archer's Intuition: When you play a \"Ranged Attack\" card, refund 1 Energy and apply 3 Sight to all enemies. (3 times/turn)
 
 Powerful Enchantment: Burn can recude 0.7% fire resistance and 0.3% pierce resistance per stack. Chill can increase 1 pierce damage received per stack. When you hit a monster with Spark, it also deals 30% of the target's Spark charges as Lightning damage.
 
