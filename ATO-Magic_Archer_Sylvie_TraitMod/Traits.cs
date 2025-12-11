@@ -25,148 +25,193 @@ namespace TraitMod
         // list of your trait IDs
         public static string[] myTraitList = { "sylviearchersintuition", "sylvieelementlock", "sylviearrowwithhawk" };
 
-        public static void myDoTrait(string _trait, ref Trait __instance)
+        private static readonly Traits _instance = new Traits();
+
+        public static void myDoTrait(
+            string trait,
+            Enums.EventActivation evt,
+            Character character,
+            Character target,
+            int auxInt,
+            string auxString,
+            CardData castedCard)
         {
-            // get info you may need
-            Enums.EventActivation _theEvent = Traverse.Create(__instance).Field("theEvent").GetValue<Enums.EventActivation>();
-            Character _character = Traverse.Create(__instance).Field("character").GetValue<Character>();
-            Character _target = Traverse.Create(__instance).Field("target").GetValue<Character>();
-            int _auxInt = Traverse.Create(__instance).Field("auxInt").GetValue<int>();
-            string _auxString = Traverse.Create(__instance).Field("auxString").GetValue<string>();
-            CardData _castedCard = Traverse.Create(__instance).Field("castedCard").GetValue<CardData>();
-            Traverse.Create(__instance).Field("character").SetValue(_character);
-            Traverse.Create(__instance).Field("target").SetValue(_target);
-            Traverse.Create(__instance).Field("theEvent").SetValue(_theEvent);
-            Traverse.Create(__instance).Field("auxInt").SetValue(_auxInt);
-            Traverse.Create(__instance).Field("auxString").SetValue(_auxString);
-            Traverse.Create(__instance).Field("castedCard").SetValue(_castedCard);
-            TraitData traitData = Globals.Instance.GetTraitData(_trait);
-            List<CardData> cardDataList = new List<CardData>();
-            List<string> heroHand = MatchManager.Instance.GetHeroHand(_character.HeroIndex);
-            Hero[] teamHero = MatchManager.Instance.GetTeamHero();
-            NPC[] teamNpc = MatchManager.Instance.GetTeamNPC();
+            switch(trait)
+            {
+                case "sylviearchersintuition":
+                    _instance.sylviearchersintuition(evt, character, target, auxInt, auxString, castedCard, trait);
+                    break;
+                    
+                case "sylvieelementlock":
+                    _instance.sylvieelementlock(evt, character, target, auxInt, auxString, castedCard, trait);
+                    break;
 
-            // activate traits
-            if (_trait == "sylviearchersintuition")
-            {
-                if (!((UnityEngine.Object)MatchManager.Instance != (UnityEngine.Object)null) || !((UnityEngine.Object)_castedCard != (UnityEngine.Object)null))
-                    return;
-                if (MatchManager.Instance.activatedTraits != null && MatchManager.Instance.activatedTraits.ContainsKey(_trait) && MatchManager.Instance.activatedTraits[_trait] > traitData.TimesPerTurn - 1)
-                    return;
-                if (_castedCard.GetCardTypes().Contains(Enums.CardType.Ranged_Attack) && _character.HeroData != null)
-                {
-                    if (!MatchManager.Instance.activatedTraits.ContainsKey("sylviearchersintuition"))
-                    {
-                        MatchManager.Instance.activatedTraits.Add("sylviearchersintuition", 1);
-                    }
-                    else
-                    {
-                        Dictionary<string, int> activatedTraits = MatchManager.Instance.activatedTraits;
-                        activatedTraits["sylviearchersintuition"] = activatedTraits["sylviearchersintuition"] + 1;
-                    }
-                    MatchManager.Instance.SetTraitInfoText();
-                    _character.ModifyEnergy(1, true);
-                    if (_character.HeroItem != null)
-                    {
-                        _character.HeroItem.ScrollCombatText(Texts.Instance.GetText("traits_Archer's Intuition", "") + TextChargesLeft(MatchManager.Instance.activatedTraits["sylviearchersintuition"], traitData.TimesPerTurn), Enums.CombatScrollEffectType.Trait);
-                        EffectsManager.Instance.PlayEffectAC("energy", true, _character.HeroItem.CharImageT, false, 0f);
-                    }
-                    NPC[] teamNPC = MatchManager.Instance.GetTeamNPC();
-                    for (int i = 0; i < teamNPC.Length; i++)
-                    {
-                        if (teamNPC[i] != null && teamNPC[i].Alive)
-                        {
-                            teamNPC[i].SetAuraTrait(_character, "sight", 3);
-                        }
-                    }
-                }
-                return;
-            }
-            
-            else if (_trait == "sylvieelementlock")
-            {
-                if (_target != null && _target.Alive && MatchManager.Instance != null && (_auxString == "burn" || _auxString == "chill" || _auxString == "spark"))
-                {
-                    if (_auxString == "burn")
-                    {
-                        _target.SetAuraTrait(_target, "sight", Functions.FuncRoundToInt((float)_auxInt));
-                        _character.HeroItem.ScrollCombatText(Texts.Instance.GetText("traits_Indomitable", ""), Enums.CombatScrollEffectType.Trait);
-                    }
-                    if (_auxString == "chill")
-                    {
-                        _target.SetAuraTrait(_target, "sight", Functions.FuncRoundToInt((float)_auxInt));
-                        _character.HeroItem.ScrollCombatText(Texts.Instance.GetText("traits_Indomitable", ""), Enums.CombatScrollEffectType.Trait);
-                    }
-                    if (_auxString == "spark")
-                    {
-                        _target.SetAuraTrait(_target, "sight", Functions.FuncRoundToInt((float)_auxInt));
-                        _character.HeroItem.ScrollCombatText(Texts.Instance.GetText("traits_Indomitable", ""), Enums.CombatScrollEffectType.Trait);
-                    }
-                }
-                return;
-            }
-
-            else if (_trait == "sylviearrowwithhawk")
-            {
-                if (MatchManager.Instance != null && _castedCard != null)
-                {
-                    if (MatchManager.Instance.activatedTraits != null && MatchManager.Instance.activatedTraits.ContainsKey("sylviearrowwithhawk") && MatchManager.Instance.activatedTraits["sylviearrowwithhawk"] > traitData.TimesPerTurn - 1)
-                    {
-                        return;
-                    }
-                    if (MatchManager.Instance.CountHeroHand(-1) == 10)
-                    {
-                        Debug.Log("[TRAIT EXECUTION] Broke because player at max cards");
-                        return;
-                    }
-                    if (_castedCard.GetCardTypes().Contains(Enums.CardType.Ranged_Attack) && _character.HeroData != null)
-                    {
-                        if (!MatchManager.Instance.activatedTraits.ContainsKey("sylviearrowwithhawk"))
-                        {
-                            MatchManager.Instance.activatedTraits.Add("sylviearrowwithhawk", 1);
-                        }
-                        else
-                        {
-                            Dictionary<string, int> activatedTraits = MatchManager.Instance.activatedTraits;
-                            activatedTraits["sylviearrowwithhawk"] = activatedTraits["sylviearrowwithhawk"] + 1;
-                        }
-                        MatchManager.Instance.SetTraitInfoText();
-                        int randomIntRange = MatchManager.Instance.GetRandomIntRange(0, 100, "trait", "");
-                        int randomIntRange2 = MatchManager.Instance.GetRandomIntRange(0, Globals.Instance.CardListByType[Enums.CardType.Ranged_Attack].Count, "trait", "");
-                        string id = Globals.Instance.CardListByType[Enums.CardType.Ranged_Attack][randomIntRange2];
-                        id = Functions.GetCardByRarity(randomIntRange, Globals.Instance.GetCardData(id, false), false);
-                        string text = MatchManager.Instance.CreateCardInDictionary(id, "", false);
-                        CardData cardData = MatchManager.Instance.GetCardData(text);
-                        cardData.Vanish = true;
-                        cardData.EnergyReductionToZeroPermanent = true;
-                        MatchManager.Instance.GenerateNewCard(1, text, false, Enums.CardPlace.Hand, null, null, -1, true, 0);
-                        _character.HeroItem.ScrollCombatText(Texts.Instance.GetText("traits_Arrow with Hawk", "") + TextChargesLeft(MatchManager.Instance.activatedTraits["sylviearrowwithhawk"], traitData.TimesPerTurn), Enums.CombatScrollEffectType.Trait);
-                        MatchManager.Instance.ItemTraitActivated(true);
-                        MatchManager.Instance.CreateLogCardModification(cardData.InternalId, MatchManager.Instance.GetHero(_character.HeroIndex));
-                    }
-                }
-                return;
+                case "sylviearrowwithhawk":
+                    _instance.sylviearrowwithhawk(evt, character, target, auxInt, auxString, castedCard, trait);
+                    break;
             }
         }
 
-        [HarmonyPrefix]
-        [HarmonyPatch(typeof(Trait), "DoTrait")]
-        public static bool DoTrait(Enums.EventActivation _theEvent, string _trait, Character _character, Character _target, int _auxInt, string _auxString, CardData _castedCard, ref Trait __instance)
+        // activate traits
+        public void sylviearchersintuition(
+            Enums.EventActivation evt,
+            Character character,
+            Character target,
+            int auxInt,
+            string auxString,
+            CardData castedCard,
+            string trait)
         {
-            if ((UnityEngine.Object)MatchManager.Instance == (UnityEngine.Object)null)
-                return false;
-            Traverse.Create(__instance).Field("character").SetValue(_character);
-            Traverse.Create(__instance).Field("target").SetValue(_target);
-            Traverse.Create(__instance).Field("theEvent").SetValue(_theEvent);
-            Traverse.Create(__instance).Field("auxInt").SetValue(_auxInt);
-            Traverse.Create(__instance).Field("auxString").SetValue(_auxString);
-            Traverse.Create(__instance).Field("castedCard").SetValue(_castedCard);
-            if (Content.medsCustomTraitsSource.Contains(_trait) && myTraitList.Contains(_trait))
+            if (character == null || castedCard == null) return;
+
+            // 只在使用卡牌时触发
+            if (evt != Enums.EventActivation.CastCard) return;
+
+            // 必须是远程攻击卡
+            if (!castedCard.HasCardType(Enums.CardType.Ranged_Attack)) return;
+            if (character.HeroData == null) return;
+
+            TraitData data = Globals.Instance.GetTraitData(trait);
+            int used = MatchManager.Instance.activatedTraits.ContainsKey(trait) ? MatchManager.Instance.activatedTraits[trait] : 0;
+            if (used >= data.TimesPerTurn) return;
+
+            // 更新次数
+            MatchManager.Instance.activatedTraits[trait] = used + 1;
+            MatchManager.Instance.SetTraitInfoText();
+
+            // 返还能量
+            character.ModifyEnergy(1, true);
+
+            // combat text
+            character.HeroItem?.ScrollCombatText(
+                Texts.Instance.GetText("traits_Archer's Intuition", "")
+                + Functions.TextChargesLeft(used + 1, data.TimesPerTurn),
+                Enums.CombatScrollEffectType.Trait
+            );
+
+            // NPC sight 光环
+            NPC[] teamNPC = MatchManager.Instance.GetTeamNPC();
+            foreach (var npc in teamNPC)
             {
-                myDoTrait(_trait, ref __instance);
-                return false;
+                if (npc != null && npc.Alive)
+                    npc.SetAuraTrait(character, "sight", 3);
             }
-            return true;
+        }
+
+        public void sylvieelementlock(
+            Enums.EventActivation evt,
+            Character character,
+            Character target,
+            int auxInt,
+            string auxString,
+            CardData castedCard,
+            string trait)
+        {
+            if (character == null || target == null || !target.Alive) return;
+
+            if (auxString != "burn" && auxString != "chill" && auxString != "spark") return;
+
+            int sightAmount = Functions.FuncRoundToInt((float)auxInt);
+            target.SetAuraTrait(target, "sight", sightAmount);
+
+            character.HeroItem?.ScrollCombatText(
+                Texts.Instance.GetText("traits_Indomitable", ""),
+                Enums.CombatScrollEffectType.Trait
+            );
+        }
+
+        public void sylviearrowwithhawk(
+            Enums.EventActivation evt,
+            Character character,
+            Character target,
+            int auxInt,
+            string auxString,
+            CardData castedCard,
+            string trait)
+        {
+            if (character == null || castedCard == null) return;
+
+            // 只在使用卡牌时触发
+            if (evt != Enums.EventActivation.CastCard) return;
+            if (!castedCard.HasCardType(Enums.CardType.Ranged_Attack)) return;
+            if (character.HeroData == null) return;
+
+            TraitData data = Globals.Instance.GetTraitData(trait);
+            int used = MatchManager.Instance.activatedTraits.ContainsKey(trait) ? MatchManager.Instance.activatedTraits[trait] : 0;
+            if (used >= data.TimesPerTurn) return;
+
+            // 检查手牌上限
+            if (MatchManager.Instance.CountHeroHand(-1) >= 10)
+            {
+                Debug.Log("[TRAIT EXECUTION] Broke because player at max cards");
+                return;
+            }
+
+            // 更新次数
+            MatchManager.Instance.activatedTraits[trait] = used + 1;
+            MatchManager.Instance.SetTraitInfoText();
+
+            // 生成卡牌
+            int rand1 = MatchManager.Instance.GetRandomIntRange(0, 100, "trait", "");
+            int rand2 = MatchManager.Instance.GetRandomIntRange(0, Globals.Instance.CardListByType[Enums.CardType.Ranged_Attack].Count, "trait", "");
+            string id = Globals.Instance.CardListByType[Enums.CardType.Ranged_Attack][rand2];
+            id = Functions.GetCardByRarity(rand1, Globals.Instance.GetCardData(id, false), false);
+            string text = MatchManager.Instance.CreateCardInDictionary(id, "", false);
+            CardData cardData = MatchManager.Instance.GetCardData(text);
+
+            cardData.Vanish = true;
+            cardData.EnergyReductionToZeroPermanent = true;
+
+            MatchManager.Instance.GenerateNewCard(1, text, false, Enums.CardPlace.Hand, null, null, -1, true, 0);
+
+            // combat text
+            character.HeroItem?.ScrollCombatText(
+                Texts.Instance.GetText("traits_Arrow with Hawk", "")
+                + Functions.TextChargesLeft(used + 1, data.TimesPerTurn),
+                Enums.CombatScrollEffectType.Trait
+            );
+
+            MatchManager.Instance.ItemTraitActivated(true);
+            MatchManager.Instance.CreateLogCardModification(cardData.InternalId, MatchManager.Instance.GetHero(character.HeroIndex));
+        }
+
+
+        [HarmonyPatch(typeof(Trait), "DoTrait")]
+        public static class Trait_DoTrait_Patch
+        {
+            [HarmonyPrefix]
+            public static bool Prefix(
+                Enums.EventActivation __0,   // theEvent
+                string __1,                  // trait id
+                Character __2,               // character
+                Character __3,               // target
+                int __4,                     // auxInt
+                string __5,                  // auxString
+                CardData __6,                // castedCard
+                Trait __instance)
+            {
+                string trait = __1;
+
+                // 如果是自定义 trait，就直接调用我们的逻辑
+                if (myTraitList.Contains(trait))
+                {
+                    myDoTrait(
+                        trait,
+                        __0,        // event
+                        __2,        // character
+                        __3,        // target
+                        __4,        // auxInt
+                        __5,        // auxString
+                        __6         // castedCard
+                    );
+
+                    // 返回 false = 阻止原版 DoTrait 执行
+                    return false;
+                }
+
+                // 否则走原版逻辑
+                return true;
+            }
         }
 
         public static string TextChargesLeft(int currentCharges, int chargesTotal)
