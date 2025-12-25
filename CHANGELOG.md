@@ -1,3 +1,7 @@
+# 2.0.10
+
+Fix a bug.
+
 # 2.0.9
 
 Update for new game version.

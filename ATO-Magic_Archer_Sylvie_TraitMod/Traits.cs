@@ -132,7 +132,6 @@ namespace TraitMod
             if (character == null || castedCard == null) return;
 
             // 只在使用卡牌时触发
-            if (evt != Enums.EventActivation.CastCard) return;
             if (!castedCard.HasCardType(Enums.CardType.Ranged_Attack)) return;
             if (character.HeroData == null) return;
 
@@ -152,17 +151,22 @@ namespace TraitMod
             MatchManager.Instance.SetTraitInfoText();
 
             // 生成卡牌
-            int rand1 = MatchManager.Instance.GetRandomIntRange(0, 100, "trait", "");
-            int rand2 = MatchManager.Instance.GetRandomIntRange(0, Globals.Instance.CardListByType[Enums.CardType.Ranged_Attack].Count, "trait", "");
-            string id = Globals.Instance.CardListByType[Enums.CardType.Ranged_Attack][rand2];
-            id = Functions.GetCardByRarity(rand1, Globals.Instance.GetCardData(id, false), false);
-            string text = MatchManager.Instance.CreateCardInDictionary(id, "", false);
-            CardData cardData = MatchManager.Instance.GetCardData(text);
+            string newCardId = "";
+            CardData newCard = null;
+            do
+            {
+                int randPercent = MatchManager.Instance.GetRandomIntRange(0, 100, "trait", "");
+                int randIndex = MatchManager.Instance.GetRandomIntRange(0, Globals.Instance.CardListByType[Enums.CardType.Ranged_Attack].Count, "trait", "");
+                string id = Globals.Instance.CardListByType[Enums.CardType.Ranged_Attack][randIndex];
+                id = Functions.GetCardByRarity(randPercent, Globals.Instance.GetCardData(id, false), false);
+                newCardId = MatchManager.Instance.CreateCardInDictionary(id, "", false);
+                newCard = MatchManager.Instance.GetCardData(newCardId);
+            } while (newCard.CardClass.ToString() != "Scout");
 
-            cardData.Vanish = true;
-            cardData.EnergyReductionToZeroPermanent = true;
+            newCard.Vanish = true;
+            newCard.EnergyReductionToZeroPermanent = true;
 
-            MatchManager.Instance.GenerateNewCard(1, text, false, Enums.CardPlace.Hand, null, null, -1, true, 0);
+            MatchManager.Instance.GenerateNewCard(1, newCardId, false, Enums.CardPlace.Hand, null, null, -1, true, 0);
 
             // combat text
             character.HeroItem?.ScrollCombatText(
@@ -172,7 +176,7 @@ namespace TraitMod
             );
 
             MatchManager.Instance.ItemTraitActivated(true);
-            MatchManager.Instance.CreateLogCardModification(cardData.InternalId, MatchManager.Instance.GetHero(character.HeroIndex));
+            MatchManager.Instance.CreateLogCardModification(newCard.InternalId, MatchManager.Instance.GetHero(character.HeroIndex));
         }
 
 
